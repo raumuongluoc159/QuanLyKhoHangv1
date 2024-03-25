@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuanLyKhoHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_CHUNGTU">
+          <Key>
+            <PropertyRef Name="Khoa" />
+          </Key>
+          <Property Name="Khoa" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MaDV" Type="nvarchar" MaxLength="10" />
+          <Property Name="SCT" Type="nvarchar" MaxLength="50" />
+          <Property Name="NGAY" Type="datetime" />
+          <Property Name="DONVI" Type="nvarchar" MaxLength="200" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoaiChungTu" Type="nvarchar" MaxLength="50" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="MACTY" Type="nvarchar" MaxLength="10" />
+          <Property Name="CREATED_DATE" Type="datetime" />
+          <Property Name="CREATED_BY" Type="int" />
+          <Property Name="UPDATED_DATE" Type="datetime" />
+          <Property Name="UPDATED_BY" Type="int" />
+          <Property Name="DELETE_DATE" Type="datetime" />
+          <Property Name="DELETE_BY" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_CHUNGTUCHITIET">
+          <Key>
+            <PropertyRef Name="KhoaCT" />
+          </Key>
+          <Property Name="KhoaCT" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Khoa" Type="uniqueidentifier" />
+          <Property Name="MaDVI" Type="nvarchar" MaxLength="10" />
+          <Property Name="SCT" Type="nvarchar" MaxLength="50" />
+          <Property Name="SCT2" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayNhap" Type="datetime" />
+          <Property Name="TrangThai" Type="int" />
+          <Property Name="SoLuong" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tb_CONGTY">
+          <Key>
+            <PropertyRef Name="MACTY" />
+          </Key>
+          <Property Name="MACTY" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TENCTY" Type="nvarchar" MaxLength="200" />
+          <Property Name="DIENTHOAI" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="FAX" Type="nvarchar" MaxLength="20" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="500" />
+          <Property Name="DISABLED" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_DONVI">
+          <Key>
+            <PropertyRef Name="MaDV" />
+          </Key>
+          <Property Name="MaDV" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenDVi" Type="nvarchar" MaxLength="200" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
+          <Property Name="DienThoai" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="20" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tb_DONVITINH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDVi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_HANGHOA">
+          <Key>
+            <PropertyRef Name="MaHH" />
+          </Key>
+          <Property Name="MaHH" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="TenHH" Type="nvarchar" MaxLength="200" />
+          <Property Name="DVT" Type="int" Nullable="false" />
+          <Property Name="MaNCC" Type="nvarchar" MaxLength="10" />
+          <Property Name="XuatXu" Type="nvarchar" MaxLength="50" />
+          <Property Name="TonKho" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GiaNhap" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GiaBan" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
+          <Property Name="TENTAT" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_NHACUNGCAP">
+          <Key>
+            <PropertyRef Name="MaNCC" />
+          </Key>
+          <Property Name="MaNCC" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenNCC" Type="nvarchar" MaxLength="200" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
+          <Property Name="DienThoai" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="20" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_SYS_FUNC">
+          <Key>
+            <PropertyRef Name="FUNC_CODE" />
+            <PropertyRef Name="SORT" />
+          </Key>
+          <Property Name="FUNC_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SORT" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+          <Property Name="ISGROUP" Type="bit" />
+          <Property Name="PARENT" Type="varchar" MaxLength="50" />
+          <Property Name="MENU" Type="bit" />
+          <Property Name="TIPS" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_TONKHO">
+          <Key>
+            <PropertyRef Name="KHOA" />
+          </Key>
+          <Property Name="KHOA" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAMKY" Type="int" />
+          <Property Name="NAM" Type="int" />
+          <Property Name="KY" Type="int" />
+          <Property Name="MADVI" Type="nvarchar" MaxLength="50" />
+          <Property Name="LG_DAU" Type="int" />
+          <Property Name="LG_NHAP" Type="int" />
+          <Property Name="LG_XUAT" Type="int" />
+          <Property Name="LG_CUOI" Type="int" />
+          <Property Name="THANHTIEN" Type="float" />
+          <Property Name="NGAY" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_XUATXU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__tb_CHUNGT__MaDVI__6D0D32F4">
+          <End Role="tb_DONVI" Type="Self.tb_DONVI" Multiplicity="0..1" />
+          <End Role="tb_CHUNGTUCHITIET" Type="Self.tb_CHUNGTUCHITIET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_DONVI">
+              <PropertyRef Name="MaDV" />
+            </Principal>
+            <Dependent Role="tb_CHUNGTUCHITIET">
+              <PropertyRef Name="MaDVI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_CHUNGTU__MaDV__72C60C4A">
+          <End Role="tb_DONVI" Type="Self.tb_DONVI" Multiplicity="0..1" />
+          <End Role="tb_CHUNGTU" Type="Self.tb_CHUNGTU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_DONVI">
+              <PropertyRef Name="MaDV" />
+            </Principal>
+            <Dependent Role="tb_CHUNGTU">
+              <PropertyRef Name="MaDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_HANGHO__MaNCC__6383C8BA">
+          <End Role="tb_NHACUNGCAP" Type="Self.tb_NHACUNGCAP" Multiplicity="0..1" />
+          <End Role="tb_HANGHOA" Type="Self.tb_HANGHOA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_NHACUNGCAP">
+              <PropertyRef Name="MaNCC" />
+            </Principal>
+            <Dependent Role="tb_HANGHOA">
+              <PropertyRef Name="MaNCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_HANGHOA__DVT__628FA481">
+          <End Role="tb_DONVITINH" Type="Self.tb_DONVITINH" Multiplicity="1" />
+          <End Role="tb_HANGHOA" Type="Self.tb_HANGHOA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_DONVITINH">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tb_HANGHOA">
+              <PropertyRef Name="DVT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyKhoHangModelStoreContainer">
+          <EntitySet Name="tb_CHUNGTU" EntityType="Self.tb_CHUNGTU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_CHUNGTUCHITIET" EntityType="Self.tb_CHUNGTUCHITIET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_CONGTY" EntityType="Self.tb_CONGTY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_DONVI" EntityType="Self.tb_DONVI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_DONVITINH" EntityType="Self.tb_DONVITINH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_HANGHOA" EntityType="Self.tb_HANGHOA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_NHACUNGCAP" EntityType="Self.tb_NHACUNGCAP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_SYS_FUNC" EntityType="Self.tb_SYS_FUNC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_TONKHO" EntityType="Self.tb_TONKHO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_XUATXU" EntityType="Self.tb_XUATXU" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_CHUNGT__MaDVI__6D0D32F4" Association="Self.FK__tb_CHUNGT__MaDVI__6D0D32F4">
+            <End Role="tb_DONVI" EntitySet="tb_DONVI" />
+            <End Role="tb_CHUNGTUCHITIET" EntitySet="tb_CHUNGTUCHITIET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_CHUNGTU__MaDV__72C60C4A" Association="Self.FK__tb_CHUNGTU__MaDV__72C60C4A">
+            <End Role="tb_DONVI" EntitySet="tb_DONVI" />
+            <End Role="tb_CHUNGTU" EntitySet="tb_CHUNGTU" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_HANGHO__MaNCC__6383C8BA" Association="Self.FK__tb_HANGHO__MaNCC__6383C8BA">
+            <End Role="tb_NHACUNGCAP" EntitySet="tb_NHACUNGCAP" />
+            <End Role="tb_HANGHOA" EntitySet="tb_HANGHOA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_HANGHOA__DVT__628FA481" Association="Self.FK__tb_HANGHOA__DVT__628FA481">
+            <End Role="tb_DONVITINH" EntitySet="tb_DONVITINH" />
+            <End Role="tb_HANGHOA" EntitySet="tb_HANGHOA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLyKhoHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_CHUNGTU">
+          <Key>
+            <PropertyRef Name="Khoa" />
+          </Key>
+          <Property Name="Khoa" Type="Guid" Nullable="false" />
+          <Property Name="MaDV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SCT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NGAY" Type="DateTime" Precision="3" />
+          <Property Name="DONVI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoaiChungTu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="MACTY" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CREATED_BY" Type="Int32" />
+          <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Int32" />
+          <Property Name="DELETE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DELETE_BY" Type="Int32" />
+          <NavigationProperty Name="tb_DONVI" Relationship="Self.FK__tb_CHUNGTU__MaDV__72C60C4A" FromRole="tb_CHUNGTU" ToRole="tb_DONVI" />
+        </EntityType>
+        <EntityType Name="tb_CHUNGTUCHITIET">
+          <Key>
+            <PropertyRef Name="KhoaCT" />
+          </Key>
+          <Property Name="KhoaCT" Type="Guid" Nullable="false" />
+          <Property Name="Khoa" Type="Guid" />
+          <Property Name="MaDVI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SCT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SCT2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+          <Property Name="TrangThai" Type="Int32" />
+          <Property Name="SoLuong" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_DONVI" Relationship="Self.FK__tb_CHUNGT__MaDVI__6D0D32F4" FromRole="tb_CHUNGTUCHITIET" ToRole="tb_DONVI" />
+        </EntityType>
+        <EntityType Name="tb_CONGTY">
+          <Key>
+            <PropertyRef Name="MACTY" />
+          </Key>
+          <Property Name="MACTY" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TENCTY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DIENTHOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FAX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DISABLED" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tb_DONVI">
+          <Key>
+            <PropertyRef Name="MaDV" />
+          </Key>
+          <Property Name="MaDV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenDVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_CHUNGTU" Relationship="Self.FK__tb_CHUNGTU__MaDV__72C60C4A" FromRole="tb_DONVI" ToRole="tb_CHUNGTU" />
+          <NavigationProperty Name="tb_CHUNGTUCHITIET" Relationship="Self.FK__tb_CHUNGT__MaDVI__6D0D32F4" FromRole="tb_DONVI" ToRole="tb_CHUNGTUCHITIET" />
+        </EntityType>
+        <EntityType Name="tb_DONVITINH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDVi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_HANGHOA" Relationship="Self.FK__tb_HANGHOA__DVT__628FA481" FromRole="tb_DONVITINH" ToRole="tb_HANGHOA" />
+        </EntityType>
+        <EntityType Name="tb_HANGHOA">
+          <Key>
+            <PropertyRef Name="MaHH" />
+          </Key>
+          <Property Name="MaHH" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenHH" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DVT" Type="Int32" Nullable="false" />
+          <Property Name="MaNCC" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="XuatXu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TonKho" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GiaNhap" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GiaBan" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TENTAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_DONVITINH" Relationship="Self.FK__tb_HANGHOA__DVT__628FA481" FromRole="tb_HANGHOA" ToRole="tb_DONVITINH" />
+          <NavigationProperty Name="tb_NHACUNGCAP" Relationship="Self.FK__tb_HANGHO__MaNCC__6383C8BA" FromRole="tb_HANGHOA" ToRole="tb_NHACUNGCAP" />
+        </EntityType>
+        <EntityType Name="tb_NHACUNGCAP">
+          <Key>
+            <PropertyRef Name="MaNCC" />
+          </Key>
+          <Property Name="MaNCC" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenNCC" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_HANGHOA" Relationship="Self.FK__tb_HANGHO__MaNCC__6383C8BA" FromRole="tb_NHACUNGCAP" ToRole="tb_HANGHOA" />
+        </EntityType>
+        <EntityType Name="tb_SYS_FUNC">
+          <Key>
+            <PropertyRef Name="FUNC_CODE" />
+            <PropertyRef Name="SORT" />
+          </Key>
+          <Property Name="FUNC_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SORT" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ISGROUP" Type="Boolean" />
+          <Property Name="PARENT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MENU" Type="Boolean" />
+          <Property Name="TIPS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_TONKHO">
+          <Key>
+            <PropertyRef Name="KHOA" />
+          </Key>
+          <Property Name="KHOA" Type="Guid" Nullable="false" />
+          <Property Name="NAMKY" Type="Int32" />
+          <Property Name="NAM" Type="Int32" />
+          <Property Name="KY" Type="Int32" />
+          <Property Name="MADVI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LG_DAU" Type="Int32" />
+          <Property Name="LG_NHAP" Type="Int32" />
+          <Property Name="LG_XUAT" Type="Int32" />
+          <Property Name="LG_CUOI" Type="Int32" />
+          <Property Name="THANHTIEN" Type="Double" />
+          <Property Name="NGAY" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_XUATXU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ten" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__tb_CHUNGTU__MaDV__72C60C4A">
+          <End Role="tb_DONVI" Type="Self.tb_DONVI" Multiplicity="0..1" />
+          <End Role="tb_CHUNGTU" Type="Self.tb_CHUNGTU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_DONVI">
+              <PropertyRef Name="MaDV" />
+            </Principal>
+            <Dependent Role="tb_CHUNGTU">
+              <PropertyRef Name="MaDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_CHUNGT__MaDVI__6D0D32F4">
+          <End Role="tb_DONVI" Type="Self.tb_DONVI" Multiplicity="0..1" />
+          <End Role="tb_CHUNGTUCHITIET" Type="Self.tb_CHUNGTUCHITIET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_DONVI">
+              <PropertyRef Name="MaDV" />
+            </Principal>
+            <Dependent Role="tb_CHUNGTUCHITIET">
+              <PropertyRef Name="MaDVI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_HANGHOA__DVT__628FA481">
+          <End Role="tb_DONVITINH" Type="Self.tb_DONVITINH" Multiplicity="1" />
+          <End Role="tb_HANGHOA" Type="Self.tb_HANGHOA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_DONVITINH">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tb_HANGHOA">
+              <PropertyRef Name="DVT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_HANGHO__MaNCC__6383C8BA">
+          <End Role="tb_NHACUNGCAP" Type="Self.tb_NHACUNGCAP" Multiplicity="0..1" />
+          <End Role="tb_HANGHOA" Type="Self.tb_HANGHOA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_NHACUNGCAP">
+              <PropertyRef Name="MaNCC" />
+            </Principal>
+            <Dependent Role="tb_HANGHOA">
+              <PropertyRef Name="MaNCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_CHUNGTU" EntityType="Self.tb_CHUNGTU" />
+          <EntitySet Name="tb_CHUNGTUCHITIET" EntityType="Self.tb_CHUNGTUCHITIET" />
+          <EntitySet Name="tb_CONGTY" EntityType="Self.tb_CONGTY" />
+          <EntitySet Name="tb_DONVI" EntityType="Self.tb_DONVI" />
+          <EntitySet Name="tb_DONVITINH" EntityType="Self.tb_DONVITINH" />
+          <EntitySet Name="tb_HANGHOA" EntityType="Self.tb_HANGHOA" />
+          <EntitySet Name="tb_NHACUNGCAP" EntityType="Self.tb_NHACUNGCAP" />
+          <EntitySet Name="tb_SYS_FUNC" EntityType="Self.tb_SYS_FUNC" />
+          <EntitySet Name="tb_TONKHO" EntityType="Self.tb_TONKHO" />
+          <EntitySet Name="tb_XUATXU" EntityType="Self.tb_XUATXU" />
+          <AssociationSet Name="FK__tb_CHUNGTU__MaDV__72C60C4A" Association="Self.FK__tb_CHUNGTU__MaDV__72C60C4A">
+            <End Role="tb_DONVI" EntitySet="tb_DONVI" />
+            <End Role="tb_CHUNGTU" EntitySet="tb_CHUNGTU" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_CHUNGT__MaDVI__6D0D32F4" Association="Self.FK__tb_CHUNGT__MaDVI__6D0D32F4">
+            <End Role="tb_DONVI" EntitySet="tb_DONVI" />
+            <End Role="tb_CHUNGTUCHITIET" EntitySet="tb_CHUNGTUCHITIET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_HANGHOA__DVT__628FA481" Association="Self.FK__tb_HANGHOA__DVT__628FA481">
+            <End Role="tb_DONVITINH" EntitySet="tb_DONVITINH" />
+            <End Role="tb_HANGHOA" EntitySet="tb_HANGHOA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_HANGHO__MaNCC__6383C8BA" Association="Self.FK__tb_HANGHO__MaNCC__6383C8BA">
+            <End Role="tb_NHACUNGCAP" EntitySet="tb_NHACUNGCAP" />
+            <End Role="tb_HANGHOA" EntitySet="tb_HANGHOA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLyKhoHangModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="tb_CHUNGTU">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_CHUNGTU">
+              <MappingFragment StoreEntitySet="tb_CHUNGTU">
+                <ScalarProperty Name="Khoa" ColumnName="Khoa" />
+                <ScalarProperty Name="MaDV" ColumnName="MaDV" />
+                <ScalarProperty Name="SCT" ColumnName="SCT" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="DONVI" ColumnName="DONVI" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LoaiChungTu" ColumnName="LoaiChungTu" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="MACTY" ColumnName="MACTY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="DELETE_DATE" ColumnName="DELETE_DATE" />
+                <ScalarProperty Name="DELETE_BY" ColumnName="DELETE_BY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CHUNGTUCHITIET">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_CHUNGTUCHITIET">
+              <MappingFragment StoreEntitySet="tb_CHUNGTUCHITIET">
+                <ScalarProperty Name="KhoaCT" ColumnName="KhoaCT" />
+                <ScalarProperty Name="Khoa" ColumnName="Khoa" />
+                <ScalarProperty Name="MaDVI" ColumnName="MaDVI" />
+                <ScalarProperty Name="SCT" ColumnName="SCT" />
+                <ScalarProperty Name="SCT2" ColumnName="SCT2" />
+                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CONGTY">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_CONGTY">
+              <MappingFragment StoreEntitySet="tb_CONGTY">
+                <ScalarProperty Name="MACTY" ColumnName="MACTY" />
+                <ScalarProperty Name="TENCTY" ColumnName="TENCTY" />
+                <ScalarProperty Name="DIENTHOAI" ColumnName="DIENTHOAI" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="DISABLED" ColumnName="DISABLED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DONVI">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_DONVI">
+              <MappingFragment StoreEntitySet="tb_DONVI">
+                <ScalarProperty Name="MaDV" ColumnName="MaDV" />
+                <ScalarProperty Name="TenDVi" ColumnName="TenDVi" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DONVITINH">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_DONVITINH">
+              <MappingFragment StoreEntitySet="tb_DONVITINH">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TenDVi" ColumnName="TenDVi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_HANGHOA">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_HANGHOA">
+              <MappingFragment StoreEntitySet="tb_HANGHOA">
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+                <ScalarProperty Name="TenHH" ColumnName="TenHH" />
+                <ScalarProperty Name="DVT" ColumnName="DVT" />
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+                <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
+                <ScalarProperty Name="TonKho" ColumnName="TonKho" />
+                <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+                <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TENTAT" ColumnName="TENTAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_NHACUNGCAP">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_NHACUNGCAP">
+              <MappingFragment StoreEntitySet="tb_NHACUNGCAP">
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+                <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_SYS_FUNC">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_SYS_FUNC">
+              <MappingFragment StoreEntitySet="tb_SYS_FUNC">
+                <ScalarProperty Name="FUNC_CODE" ColumnName="FUNC_CODE" />
+                <ScalarProperty Name="SORT" ColumnName="SORT" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ISGROUP" ColumnName="ISGROUP" />
+                <ScalarProperty Name="PARENT" ColumnName="PARENT" />
+                <ScalarProperty Name="MENU" ColumnName="MENU" />
+                <ScalarProperty Name="TIPS" ColumnName="TIPS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_TONKHO">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_TONKHO">
+              <MappingFragment StoreEntitySet="tb_TONKHO">
+                <ScalarProperty Name="KHOA" ColumnName="KHOA" />
+                <ScalarProperty Name="NAMKY" ColumnName="NAMKY" />
+                <ScalarProperty Name="NAM" ColumnName="NAM" />
+                <ScalarProperty Name="KY" ColumnName="KY" />
+                <ScalarProperty Name="MADVI" ColumnName="MADVI" />
+                <ScalarProperty Name="LG_DAU" ColumnName="LG_DAU" />
+                <ScalarProperty Name="LG_NHAP" ColumnName="LG_NHAP" />
+                <ScalarProperty Name="LG_XUAT" ColumnName="LG_XUAT" />
+                <ScalarProperty Name="LG_CUOI" ColumnName="LG_CUOI" />
+                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_XUATXU">
+            <EntityTypeMapping TypeName="QuanLyKhoHangModel.tb_XUATXU">
+              <MappingFragment StoreEntitySet="tb_XUATXU">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
