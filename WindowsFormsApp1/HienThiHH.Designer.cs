@@ -52,18 +52,20 @@
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.nccTB = new System.Windows.Forms.TextBox();
-            this.dvtTB = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.dvtCB = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 43);
+            this.listView1.Location = new System.Drawing.Point(12, 43);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1011, 254);
+            this.listView1.Size = new System.Drawing.Size(1005, 254);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // nameTB
             // 
@@ -87,7 +89,7 @@
             // 
             this.xxTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.xxTB.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xxTB.Location = new System.Drawing.Point(310, 383);
+            this.xxTB.Location = new System.Drawing.Point(301, 381);
             this.xxTB.Name = "xxTB";
             this.xxTB.Size = new System.Drawing.Size(165, 23);
             this.xxTB.TabIndex = 6;
@@ -96,7 +98,7 @@
             // 
             this.priceTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.priceTB.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceTB.Location = new System.Drawing.Point(310, 434);
+            this.priceTB.Location = new System.Drawing.Point(301, 440);
             this.priceTB.Name = "priceTB";
             this.priceTB.Size = new System.Drawing.Size(165, 23);
             this.priceTB.TabIndex = 7;
@@ -153,7 +155,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(244, 337);
+            this.label5.Location = new System.Drawing.Point(235, 332);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 16);
             this.label5.TabIndex = 15;
@@ -163,7 +165,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(244, 388);
+            this.label6.Location = new System.Drawing.Point(235, 386);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 16);
             this.label6.TabIndex = 16;
@@ -173,7 +175,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(244, 436);
+            this.label7.Location = new System.Drawing.Point(235, 442);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 16);
             this.label7.TabIndex = 17;
@@ -286,19 +288,10 @@
             // 
             this.nccTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nccTB.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nccTB.Location = new System.Drawing.Point(310, 335);
+            this.nccTB.Location = new System.Drawing.Point(301, 330);
             this.nccTB.Name = "nccTB";
             this.nccTB.Size = new System.Drawing.Size(165, 23);
             this.nccTB.TabIndex = 29;
-            // 
-            // dvtTB
-            // 
-            this.dvtTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dvtTB.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dvtTB.Location = new System.Drawing.Point(117, 441);
-            this.dvtTB.Name = "dvtTB";
-            this.dvtTB.Size = new System.Drawing.Size(100, 23);
-            this.dvtTB.TabIndex = 30;
             // 
             // button2
             // 
@@ -312,13 +305,38 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(574, 4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(114, 24);
+            this.button3.TabIndex = 32;
+            this.button3.Text = "Xóa kết quả ";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // dvtCB
+            // 
+            this.dvtCB.FormattingEnabled = true;
+            this.dvtCB.Items.AddRange(new object[] {
+            "Thêm ĐVT..."});
+            this.dvtCB.Location = new System.Drawing.Point(117, 442);
+            this.dvtCB.Name = "dvtCB";
+            this.dvtCB.Size = new System.Drawing.Size(101, 21);
+            this.dvtCB.TabIndex = 33;
+            this.dvtCB.DropDown += new System.EventHandler(this.dvtCB_DropDown);
+            this.dvtCB.SelectedValueChanged += new System.EventHandler(this.dvtCB_SelectedValueChanged);
+            // 
             // HienThiHH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 536);
+            this.Controls.Add(this.dvtCB);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.dvtTB);
             this.Controls.Add(this.nccTB);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label10);
@@ -376,7 +394,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox nccTB;
-        private System.Windows.Forms.TextBox dvtTB;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox dvtCB;
     }
 }

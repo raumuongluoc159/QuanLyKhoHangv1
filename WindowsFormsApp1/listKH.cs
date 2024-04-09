@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
         }
         void LOADDATA()
         {
-            string query = "SELECT * FROM dbo.tb_congty";
+            string query = "SELECT * FROM dbo.tb_khachhang";
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             listView1.Columns.Add("Mã Khách Hàng", 100);
             listView1.Columns.Add("Tên Khách Hàng", 100);
@@ -57,21 +57,29 @@ namespace WindowsFormsApp1
             string email = EmailTB.Text;
             string fax = FaxTB.Text;
             string note = TBnote.Text;
-            string query = "INSERT INTO dbo.tb_congty (";
+            bool containsNonDigit = id.Any(c => !char.IsDigit(c));
+            string query = "INSERT INTO dbo.tb_khachhang (";
             List<string> updateColumns = new List<string>();
             List<string> columnNames = new List<string>();
 
             // Kiểm tra và thêm các cột cần cập nhật vào danh sách
-            if (!string.IsNullOrEmpty(id))
+            //id có kiểu dữ liệu int, kiểm tra trước khi thêm vào bảng
+            if (!string.IsNullOrEmpty(id) && !containsNonDigit)
             {
                 updateColumns.Add($"N'{id}'");
-                columnNames.Add("MaCongTy");
+                columnNames.Add("MaKhach");
             }
+            else
+            {
+                MessageBox.Show("ID không hợp lệ");
+            }
+
+
 
             if (!string.IsNullOrEmpty(name))
             {
                 updateColumns.Add($"N'{name}'");
-                columnNames.Add("TenCongTy");
+                columnNames.Add("TenKhach");
             }
             if (!string.IsNullOrEmpty(address))
             {
@@ -149,13 +157,13 @@ namespace WindowsFormsApp1
             string email = EmailTB.Text;
             string fax = FaxTB.Text;
             string note = TBnote.Text;
-            string query = "UPDATE dbo.tb_congty SET ";
+            string query = "UPDATE dbo.tb_khachhang SET ";
             List<string> updateColumns = new List<string>();
 
             // Kiểm tra và thêm các cột cần cập nhật vào danh sách
             if (!string.IsNullOrEmpty(name))
             { 
-                updateColumns.Add($"TenCongTy = N'{name}'");
+                updateColumns.Add($"TenKhach = N'{name}'");
             }
             if (!string.IsNullOrEmpty(address))
             {
@@ -204,7 +212,7 @@ namespace WindowsFormsApp1
                     MessageBox.Show("ID không được để trống");
                     break;
                 }
-                query += $" WHERE MaCongTy = N'{id}'";
+                query += $" WHERE MaKhach = N'{id}'";
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
                 if (result > 0)
                 {
@@ -245,7 +253,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             string id = idTB.Text;
-            string query = string.Format("DELETE FROM dbo.tb_congty WHERE MaCongTy = N'{0}'", id);
+            string query = string.Format("DELETE FROM dbo.tb_khachhang WHERE MaKhach = N'{0}'", id);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             if (result > 0)
             {

@@ -12,6 +12,22 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>D:\MyAppilcationRelease\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,6 +68,18 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>75D4F7D1229028AA51CA8E02079DE599B3D7E061</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>QLKH_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -60,13 +88,19 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.1.35\lib\net461\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v21.2.UI, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.UI, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.Wizard, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -101,6 +135,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addDV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addDV.Designer.cs">
+      <DependentUpon>addDV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addDVT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addDVT.Designer.cs">
+      <DependentUpon>addDVT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\PhanLoaiTK.cs" />
@@ -122,11 +180,53 @@
     <Compile Include="frmInbaocao.Designer.cs">
       <DependentUpon>frmInbaocao.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInphieubyid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInphieubyid.Designer.cs">
+      <DependentUpon>frmInphieubyid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInphieuxuatbyid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInphieuxuatbyid.Designer.cs">
+      <DependentUpon>frmInphieuxuatbyid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmqlhoadon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmqlhoadon.Designer.cs">
+      <DependentUpon>frmqlhoadon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemPhieuNhap.Designer.cs">
+      <DependentUpon>frmThemPhieuNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemPhieuXuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemPhieuXuat.Designer.cs">
+      <DependentUpon>frmThemPhieuXuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="generalSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="generalSet.Designer.cs">
+      <DependentUpon>generalSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="HienThiHH.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HienThiHH.Designer.cs">
       <DependentUpon>HienThiHH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="inHoaDon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>inHoaDon.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="listKH.cs">
       <SubType>Form</SubType>
@@ -134,14 +234,16 @@
     <Compile Include="listKH.Designer.cs">
       <DependentUpon>listKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhieuNhap.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhieuNhap.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLKhoHang.cs">
+      <DependentUpon>QLKhoHang.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLKhoHang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLKhoHang.xsd</DependentUpon>
+    </Compile>
     <Compile Include="qlnx.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,14 +256,6 @@
     <Compile Include="qltk.Designer.cs">
       <DependentUpon>qltk.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyXuatKho.cs">
-      <DependentUpon>QuanLyXuatKho.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLyXuatKho.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyXuatKho.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Reg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +263,26 @@
       <DependentUpon>Reg.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="sysSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sysSetting.Designer.cs">
+      <DependentUpon>sysSetting.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="addDV.resx">
+      <DependentUpon>addDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addDVT.resx">
+      <DependentUpon>addDVT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport2.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,15 +292,33 @@
     <EmbeddedResource Include="frmInbaocao.resx">
       <DependentUpon>frmInbaocao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInphieubyid.resx">
+      <DependentUpon>frmInphieubyid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInphieuxuatbyid.resx">
+      <DependentUpon>frmInphieuxuatbyid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmqlhoadon.resx">
+      <DependentUpon>frmqlhoadon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemPhieuNhap.resx">
+      <DependentUpon>frmThemPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemPhieuXuat.resx">
+      <DependentUpon>frmThemPhieuXuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="generalSet.resx">
+      <DependentUpon>generalSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HienThiHH.resx">
       <DependentUpon>HienThiHH.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="inHoaDon.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inHoaDon.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="listKH.resx">
       <DependentUpon>listKH.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PhieuNhap.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>PhieuNhap.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -202,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reg.resx">
       <DependentUpon>Reg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sysSetting.resx">
+      <DependentUpon>sysSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -223,17 +358,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="QuanLyXuatKho.xsc">
-      <DependentUpon>QuanLyXuatKho.xsd</DependentUpon>
+    <None Include="QLKhoHang.xsc">
+      <DependentUpon>QLKhoHang.xsd</DependentUpon>
     </None>
-    <None Include="QuanLyXuatKho.xsd">
+    <None Include="QLKhoHang.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QuanLyXuatKho.Designer.cs</LastGenOutput>
+      <LastGenOutput>QLKhoHang.Designer.cs</LastGenOutput>
     </None>
-    <None Include="QuanLyXuatKho.xss">
-      <DependentUpon>QuanLyXuatKho.xsd</DependentUpon>
+    <None Include="QLKhoHang.xss">
+      <DependentUpon>QLKhoHang.xsd</DependentUpon>
     </None>
+    <None Include="QLKH_TemporaryKey.pfx" />
     <None Include="Resources\wallpaperflare.com_wallpaper.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +431,18 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,7 +21,9 @@ namespace WindowsFormsApp1.DAO
           private set { DataProvider.instance = value; }
         }
         private DataProvider() { }
-        private string connectionSTR = "Data Source=DESKTOP-AI8MUAJ\\DEVICE1;Initial Catalog=QuanLyKhoHang;Integrated Security=True";
+        private string connectionSTR = "Data Source=tcp:thetoan.database.windows.net,1433;Initial Catalog=QuanLyKhoHang;User ID=thetoanictu;Password=Dtt1990vn!;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+
         public DataTable ExecuteDataset(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
@@ -55,7 +57,8 @@ namespace WindowsFormsApp1.DAO
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
                 DataTable data = new DataTable();
-                using (SqlConnection connection = new SqlConnection(connectionSTR)){
+                using (SqlConnection connection = new SqlConnection(connectionSTR))
+            {
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
                 if(parameter != null)
@@ -98,7 +101,6 @@ namespace WindowsFormsApp1.DAO
                         }
                     }
                 }
-                MessageBox.Show(query);
                 data = command.ExecuteNonQuery();
                 connection.Close();
             }

@@ -57,10 +57,7 @@ namespace WindowsFormsApp1
             else if (Type == "staff")
             {
                 loaiTK.Text = "Nhân viên";
-                qlkhBT.Visible = true;
-                qlspBT.Visible = true;
                 qltkBT.Enabled = false;
-                reportBT.Enabled = false;
                 qlhdBT.Enabled = false;
             }
             else if (Type == "keeper")
@@ -80,13 +77,10 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        { 
-                Application.Exit();
-        }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Application.Exit();
         }
         private void navBarItem24_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
@@ -115,12 +109,22 @@ namespace WindowsFormsApp1
 
         private void reportBT_Click(object sender, EventArgs e)
         {
+            //alert khi người dùng đăng xuất
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn đăng xuất không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Hide();
+                Form1 form1 = new Form1();
+                form1.Show();
+
+
+            }
 
         }
 
         private void qlhdBT_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new frmqlhoadon());
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -131,6 +135,20 @@ namespace WindowsFormsApp1
         private void qlnx_Click(object sender, EventArgs e)
         {
             OpenChildForm(new qlnx());
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            sysSetting sys = new sysSetting();
+            OpenChildForm(sys);
         }
     }
     }

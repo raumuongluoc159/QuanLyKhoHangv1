@@ -190,6 +190,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources.close;
             this.pictureBox4.Location = new System.Drawing.Point(994, -2);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);

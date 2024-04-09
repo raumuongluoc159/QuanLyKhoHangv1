@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -159,10 +160,13 @@ namespace WindowsFormsApp1
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn Có Muốn Thoát Chương Trình ?", "Thông Báo", MessageBoxButtons.OKCancel) != DialogResult.OK)
+            DialogResult rs;
+            rs = MessageBox.Show("Bạn có muốn thoát không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rs == DialogResult.No)
             {
                 e.Cancel = true;
             }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

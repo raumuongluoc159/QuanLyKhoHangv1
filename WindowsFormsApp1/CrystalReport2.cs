@@ -16,14 +16,14 @@ namespace WindowsFormsApp1 {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PhieuNhap : ReportClass {
+    public class CrystalReport2 : ReportClass {
         
-        public PhieuNhap() {
+        public CrystalReport2() {
         }
         
         public override string ResourceName {
             get {
-                return "PhieuNhap.rpt";
+                return "CrystalReport2.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace WindowsFormsApp1 {
         
         public override string FullResourceName {
             get {
-                return "WindowsFormsApp1.PhieuNhap.rpt";
+                return "WindowsFormsApp1.CrystalReport2.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace WindowsFormsApp1 {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPhieuNhap : Component, ICachedReport {
+    public class CachedCrystalReport2 : Component, ICachedReport {
         
-        public CachedPhieuNhap() {
+        public CachedCrystalReport2() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace WindowsFormsApp1 {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PhieuNhap rpt = new PhieuNhap();
+            CrystalReport2 rpt = new CrystalReport2();
             rpt.Site = this.Site;
             return rpt;
         }

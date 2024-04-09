@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
+using static WindowsFormsApp1.frmThemPhieuNhap;
 
 namespace WindowsFormsApp1
 {
@@ -46,22 +47,53 @@ namespace WindowsFormsApp1
             }
 
         }
+        //Open the form when combobox item is "Thêm..."
 
         private void addBT_Click(object sender, EventArgs e)
         {
             string id = idTB.Text;
             string name = nameTB.Text;
+            if (string.IsNullOrEmpty(name))
+            {
+                MessageBox.Show("Vui lòng nhập tên hàng hóa");
+                return;
+            }
             string soluong = slTB.Text;
+            if (string.IsNullOrEmpty(soluong))
+            {
+                MessageBox.Show("Vui lòng nhập số lượng");
+                return;
+            }
             string ncc = nccTB.Text;
-            string dvt = dvtTB.Text;
+            if (string.IsNullOrEmpty(ncc))
+            {
+                MessageBox.Show("Vui lòng chọn nhà cung cấp");
+                return;
+            }
+            DVTItems selectedDVT = (DVTItems)dvtCB.SelectedItem;
+            if (selectedDVT == null)
+            {
+                MessageBox.Show("Vui lòng chọn đơn vị tính");
+                return;
+            }
+            int DVT = selectedDVT.MaDVT;
             string xuatxu = xxTB.Text;
+            if (string.IsNullOrEmpty(xuatxu))
+            {
+                MessageBox.Show("Vui lòng nhập xuất xứ");
+                return;
+            }
             string price = priceTB.Text;
+            if (string.IsNullOrEmpty(price))
+            {
+                MessageBox.Show("Vui lòng nhập giá tiền");
+                return;
+            }
             string ghichu = noteTB.Text;
             string ngaynhap = "";
             string query = "INSERT INTO dbo.tb_HANGHOA (";
             List<string> updateColumns = new List<string>();
             List<string> columnNames = new List<string>();
-
             // Kiểm tra và thêm các cột cần cập nhật vào danh sách
             if (!string.IsNullOrEmpty(id))
             {
@@ -73,10 +105,9 @@ namespace WindowsFormsApp1
                 updateColumns.Add($"N'{name}'");
                 columnNames.Add("TenHangHoa");
             }
-            //add  TenDVT to the list by MaDVT from database
-            if (!string.IsNullOrEmpty(dvt))
+            if (!string.IsNullOrEmpty(DVT.ToString()))
             {
-                updateColumns.Add($"N'{dvt}'");
+                updateColumns.Add($"{DVT}");
                 columnNames.Add("DVT");
             }
             if (!string.IsNullOrEmpty(soluong))
@@ -85,7 +116,6 @@ namespace WindowsFormsApp1
                 columnNames.Add("SoLuong");
             }
 
-            //add  NhaCungCap to the list by MaNhaCungCap from database
             if (!string.IsNullOrEmpty(ncc))
             {
                 updateColumns.Add($"N'{ncc}'");
@@ -162,7 +192,8 @@ namespace WindowsFormsApp1
             string soluong = slTB.Text;
             string id = idTB.Text;
             string ncc = nccTB.Text;
-            string dvt = dvtTB.Text;
+            DVTItems selectedDVT = (DVTItems)dvtCB.SelectedItem;
+            int DVT = selectedDVT.MaDVT;
             string xuatxu = xxTB.Text;
             string price = priceTB.Text;
             string ghichu = noteTB.Text;
@@ -179,8 +210,9 @@ namespace WindowsFormsApp1
                 updateColumns.Add($"NhaCungCap = N'{ncc}'");
             if (xuatxu != "")
                 updateColumns.Add($"XuatXu = N'{xuatxu}'");
-            if (dvt != "")
-                updateColumns.Add($"XuatXu = N'{dvt}'");
+           //add  TenDVT to the list by MaDVT from database
+           if (DVT != 0)
+                updateColumns.Add($"DVT = {DVT}");
             if (price != "")
                 updateColumns.Add($"GiaNhap = {price}");
             if (ghichu != "")
@@ -233,7 +265,10 @@ namespace WindowsFormsApp1
         private void deleteBT_Click(object sender, EventArgs e)
         {
             string id = idTB.Text;
-            string query = string.Format("DELETE FROM dbo.tb_HANGHOA WHERE MaHangHoa = N'{0}'", id);
+            // Xóa chi tiết phiếu nhập có m rồi đến phiếu nhập sau đó đến hàng hóa bằng id
+            string query = $"DELETE FROM dbo.tb_phieunhapchitiet WHERE MaHangHoa ={id};\r\nDELETE FROM dbo.tb_hanghoa WHERE MaHangHoa ={id};";
+
+            
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             if (result > 0)
             {
@@ -291,32 +326,33 @@ namespace WindowsFormsApp1
         {
             string input = textBox1.Text;
             object selectedItem = comboBox1.SelectedItem;
+            //alert if selected item is null
+            if (selectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn một cột để tìm kiếm");
+                return;
+            }
             string selectedText = selectedItem.ToString();
             string query = "";
             if (selectedText == "Mã Hàng Hóa")
             {
                 query = string.Format("SELECT MaHangHoa,TenHangHoa,SoLuong,DVT,NhaCungCap,XuatXu,GiaNhap,GhiChu,NgayNhap FROM dbo.tb_hanghoa Where MaHangHoa like N'{0}'", input);
-                MessageBox.Show(query);
             }
             else if (selectedText == "Tên Hàng Hóa") 
             {
                 query = string.Format("SELECT TenHangHoa,MaHangHoa,SoLuong,DVT,NhaCungCap,XuatXu,GiaNhap,GhiChu,NgayNhap FROM dbo.tb_hanghoa Where TenHangHoa like N'{0}'", input);
-                MessageBox.Show(query);
             }
             else if (selectedText == "Xuất Xứ")
             { 
                 query = string.Format("SELECT XuatXu,MaHangHoa,TenHangHoa,SoLuong,DVT,NhaCungCap,GiaNhap,GhiChu,NgayNhap FROM dbo.tb_hanghoa Where XuatXu like N'{0}'", input);
-                MessageBox.Show(query);
             }
             else if (selectedText == "Nhà Cung Cấp")
             {
                 query = string.Format("SELECT NhaCungCap,MaHangHoa,TenHangHoa,SoLuong,DVT,XuatXu,GiaNhap,GhiChu,NgayNhap FROM dbo.tb_hanghoa Where NhaCungCap like N'{0}'", input);
-                MessageBox.Show(query);
             }
             else if (selectedText == "Ngày Nhập")
             {
                 query = string.Format("SELECT NgayNhap,MaHangHoa,TenHangHoa,SoLuong,DVT,NhaCungCap,XuatXu,GiaNhap,GhiChu FROM dbo.tb_hanghoa Where NgayNhap like N'{0}'", input);
-                MessageBox.Show(query);
             }
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             listView1.Clear();
@@ -340,6 +376,84 @@ namespace WindowsFormsApp1
                 listView1.Items.Add(item);
             }
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LOADDATA();
+            comboBox1.Items.Clear();
+            textBox1.Text = "";
+
+        }
+        public class DVTItems
+        {
+            public int MaDVT { get; set; }
+            public string TenDVT { get; set; }
+            public DVTItems(int maDVT, string tenDVT)
+            {
+                MaDVT = maDVT;
+                TenDVT = tenDVT;
+            }
+            public override string ToString()
+            {
+                return TenDVT;
+            }
+        }
+        bool isDataLoaded = false;
+        private void LoadDataToComboBoxDVTOnce()
+        {
+            if (!isDataLoaded)
+            {
+                LoadDataToComboBoxDVT();
+
+                isDataLoaded = true;
+            }
+        }
+        private void LoadDataToComboBoxDVT()
+        {
+            // Thực hiện truy vấn để lấy dữ liệu từ cơ sở dữ liệu
+            string query = "SELECT maDVT, TenDVT FROM tb_DVT";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            // Kiểm tra xem dữ liệu có được lấy thành công không
+            if (data != null && data.Rows.Count > 0)
+            {
+                // Duyệt qua từng dòng dữ liệu và thêm vào ComboBox
+                foreach (DataRow row in data.Rows)
+                {
+                    string dvt = row["TenDVT"].ToString();
+                    int maDVT = Convert.ToInt32(row["MaDVT"]);
+
+                    // Thêm mục vào ComboBox
+                    dvtCB.Items.Add(new DVTItems(maDVT, dvt));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu đơn vị để hiển thị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void dvtCB_DropDown(object sender, EventArgs e)
+        {
+            LoadDataToComboBoxDVTOnce();
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Double clicked");
+        }
+
+        private void dvtCB_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (dvtCB.SelectedItem.ToString() == "Thêm ĐVT...")
+            {
+                addDVT addDVT = new addDVT();
+                addDVT.ShowDialog();
+                dvtCB.Items.Clear();
+                LoadDataToComboBoxDVT();
+                dvtCB.Items.Add("Thêm ĐVT...");
+            }
         }
     }
     }

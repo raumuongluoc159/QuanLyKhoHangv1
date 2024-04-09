@@ -39,6 +39,8 @@
             this.qlnx = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.qlhdBT = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.reportBT = new System.Windows.Forms.ToolStripButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -70,6 +72,8 @@
             this.qlnx,
             this.toolStripSeparator1,
             this.qlhdBT,
+            this.toolStripSeparator6,
+            this.toolStripButton1,
             this.toolStripSeparator5,
             this.reportBT});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -144,6 +148,20 @@
             this.qlhdBT.Text = "Quản lý hóa đơn";
             this.qlhdBT.Click += new System.EventHandler(this.qlhdBT_Click);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::WindowsFormsApp1.Properties.Resources.integration;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(131, 36);
+            this.toolStripButton1.Text = "Cài đặt hệ thống";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click_1);
+            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
@@ -151,11 +169,11 @@
             // 
             // reportBT
             // 
-            this.reportBT.Image = global::WindowsFormsApp1.Properties.Resources.report;
+            this.reportBT.Image = global::WindowsFormsApp1.Properties.Resources.logout;
             this.reportBT.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reportBT.Name = "reportBT";
-            this.reportBT.Size = new System.Drawing.Size(153, 36);
-            this.reportBT.Text = "Báo cáo và Phân tích";
+            this.reportBT.Size = new System.Drawing.Size(97, 36);
+            this.reportBT.Text = "Đăng xuất";
             this.reportBT.Click += new System.EventHandler(this.reportBT_Click);
             // 
             // panelControl1
@@ -187,7 +205,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 39);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1057, 524);
+            this.panel2.Size = new System.Drawing.Size(1057, 556);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -196,7 +214,7 @@
             this.loaiTK.BackColor = System.Drawing.Color.White;
             this.loaiTK.Font = new System.Drawing.Font("SF Pro Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loaiTK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.loaiTK.Location = new System.Drawing.Point(378, 429);
+            this.loaiTK.Location = new System.Drawing.Point(369, 490);
             this.loaiTK.Name = "loaiTK";
             this.loaiTK.Size = new System.Drawing.Size(229, 23);
             this.loaiTK.TabIndex = 9;
@@ -207,7 +225,7 @@
             this.username.BackColor = System.Drawing.Color.White;
             this.username.Font = new System.Drawing.Font("SF Pro Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.username.Location = new System.Drawing.Point(148, 396);
+            this.username.Location = new System.Drawing.Point(139, 457);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(229, 23);
             this.username.TabIndex = 10;
@@ -217,7 +235,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(381, 458);
+            this.panel4.Location = new System.Drawing.Point(372, 519);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(313, 1);
             this.panel4.TabIndex = 7;
@@ -226,7 +244,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel3.Location = new System.Drawing.Point(143, 420);
+            this.panel3.Location = new System.Drawing.Point(134, 481);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(313, 1);
             this.panel3.TabIndex = 8;
@@ -237,7 +255,7 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("SF Compact Display", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(40, 433);
+            this.label3.Location = new System.Drawing.Point(31, 494);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(316, 25);
             this.label3.TabIndex = 5;
@@ -249,7 +267,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("SF Compact Display", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(40, 396);
+            this.label2.Location = new System.Drawing.Point(31, 457);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 25);
             this.label2.TabIndex = 6;
@@ -272,7 +290,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 563);
+            this.ClientSize = new System.Drawing.Size(1057, 595);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form2";
@@ -314,5 +332,7 @@
         private System.Windows.Forms.ToolStripButton qlnx;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     }
 }
